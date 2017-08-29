@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="introdutions" />
+  <meta charset="utf-8">
+  <title>CCCLARITY 简历</title>
+  <style type="text/css">
+    body{
+      background-color: #fff2e3;
+      text-align: center;
+      color: #87968e;
+    }
+    .layout{
+      width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .header ul,
+    .header li{
+      list-style: none;
+    }
+    a{
+      text-decoration: none;
+      color: #797373;
+    }
+    .header .buttons{
+      text-align: center;
+      display: inline-block;
+    }
+    .header .buttons li{
+      float: left;
+      padding: 5px 10px;
+      margin: 0 10px;
+      background: #b2dca7;
+    }
+    .header .buttons li a{
+    }
+    .buttons li .active{
+      color: #fff;
+    }
+    .content{
+      text-align: center;
+      padding-left: 40px;
+    }
+    .content .picture img{
+      width: 500px;
+      margin-bottom: 10px;
+    }
+    .code-button{
+      margin: 5px 10px;
+      padding: 5px 10px;
+    }
+    .footer{
+      margin: 20px;
+    }
+    .clearfix::after{
+      display: block;
+      content: '';
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <div class="header">
+      <h1>我的项目</h1>
+      <p>**一直在行走的程序媛**</p>
+      <ul class="buttons clearfix">
+        <li><a class="button active" href="#" target="_blank">项目1</a></li>
+        <li><a class="button" href="./proj1.html" target="_blank">项目2</a></li>
+        <li><a class="button" href="./companyintro.html" target="_blank">项目3</a></li>
+        <li><a class="button" href="./rotation.html" target="_blank">项目4</a></li>
+        <li><a class="button" href="./lazyload.html" target="_blank">项目5</a></li>
+        <li><a class="button" href="https://ccclarity.github.io/todoList-practice1/build/index.html" target="_blank">项目6</a></li>
+      </ul>
+    </div>
+    <div class="content">
+      <div class="picture">
+        <img src="https://i0.wp.com/picjumbo.com/wp-content/uploads/HNCK2126.jpg?w=2210&quality=50" alt="">
+      </div>
+      <div class="code-buttons">
+        <a href="#" class="code-button">查看源码</a>
+        <a href="#" class="code-button">使用说明</a>
+      </div>
+    </div>
+    <div class="footer">
+      作者：<a href="">程志博</a>
+    </div>
+  </div>
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+  <script type="text/javascript">
+    var listLength = $('.header .buttons li').length
+    for(var i = 0; i<listLength; i++){
+      $('.header .buttons li').eq(i).hover(
+        function(){
+          $(this).find('.button').addClass('active')
+        },function(){
+          $(this).find('.button').removeClass('active')
+        }
+      )
+    }
+    
+  </script>
+  
+</body>
+</html>

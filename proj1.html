@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="个人简历" />
+  <meta charset="utf-8">
+  <title>在线简历</title>
+  <style type="text/css">
+    .layout{
+      width: 800px;
+      margin: 0 auto;
+    }
+    .header{
+      display: flex;
+      justify-content: center;
+    }
+    .header .avator{
+      width: 100px;
+      height: 100px;
+    }
+    .header .avator img{
+      height: 100%;
+      width: 100%;
+      border-radius: 50%;
+      margin: 40px 30px;
+    }
+    .name{
+      margin-left: 50px;
+      margin-top: 20px;
+      padding: 0;
+      flex-grow: 1;
+    }
+    .contacts{
+      margin-left: 10px;
+      margin-right: 20px;
+    }
+    .contacts h4{
+      border-bottom: 2px solid;
+    }
+    .contacts span{
+      font-weight: bold;
+    }
+    .main{
+      padding-right: 20px;
+    }
+    .experience ul{
+      list-style: none;
+    }
+    .experience li{
+      border-left: 1px solid;
+      padding-left: 60px;
+      padding-bottom: 10px;
+      position: relative;
+    }
+    .experience li::before{
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background-color: #000;
+      border-radius: 50% 50%;
+      position: absolute;
+      top: 0;
+      left: -5px;
+    }
+    .experience ul h3{
+      width: 400px;
+      border-bottom: 2px solid #888;
+      padding-bottom: 10px;
+    }
+    .experience ul li .title{
+      margin: 0;
+      padding: 0;
+      color: #888;
+    }
+    .experience ul li .title .company{
+      color: #000;
+    }
+    .education ul{
+      list-style: none;
+    }
+    .education li{
+      border-left: 1px solid;
+      padding-left: 60px;
+      padding-bottom: 10px;
+      position: relative;
+    }
+    .education li::before{
+      content: '';
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background-color: #000;
+      border-radius: 50% 50%;
+      position: absolute;
+      top: 0;
+      left: -5px;
+    }
+    .education ul h3{
+      width: 400px;
+      border-bottom: 2px solid #888;
+      padding-bottom: 10px;
+    }
+    .education ul li .title{
+      margin: 0;
+      padding: 0;
+      color: #888;
+    }
+    .education ul li .title .school{
+      color: #000;
+    }
+    .activities{
+      width: 100%;
+      float: left;
+    }
+    .activities ul{
+      list-style: none;
+    }
+    .activities li{
+
+      padding-left: 30px;
+      padding-bottom: 10px;
+      position: relative;
+    }
+    .activities li::before{
+      content: '+';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 1px solid;
+      text-align: center;
+      border-radius: 50% 50%;
+      position: absolute;
+      top: 0;
+      left: -10px;
+    }
+    .activities ul h3{
+      width: 300px;
+      border-bottom: 2px solid #888;
+      padding-bottom: 10px;
+    }
+    .activities ul li .title{
+      margin: 0;
+      padding: 0;
+      color: #888;
+    }
+    .activities ul li .title .social{
+      color: #000;
+    }
+    .activities .social img{
+      width: 600px;
+      /*height: 500px;*/
+    }
+    /*.skills{
+      width: 50%;
+      float: left;
+    }
+    .skills ul{
+      list-style: none;
+    }
+    .skills li{
+      padding-left: 30px;
+      padding-bottom: 10px;
+      position: relative;
+    }
+    .skills li::before{
+      content: '+';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 1px solid;
+      text-align: center;
+      border-radius: 50% 50%;
+      position: absolute;
+      top: 0;
+      left: -10px;
+    }
+    .skills ul h3{
+      width: 300px;
+      border-bottom: 2px solid #888;
+      padding-bottom: 10px;
+    }
+    .skills ul li p{
+      margin-bottom: 20px;
+      width: 100px;
+      padding: 0;
+      color: #000;
+    }*/
+    .clearfix:after{
+      content: '';
+      display: block;
+      clear: both;
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <div class="header">
+      <div class="avator">
+        <img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/65d4aba2-a097-4b24-aaa0-ebbaf7eedab2" alt="">
+      </div>
+      <div class="name">
+        <h1>程志博</h1>
+        <p>前端开发工程师</p>
+      </div>
+      <div class="contacts">
+        <h4>CONTACTS</h4>
+        <p><span>工作地点</span> 北京</p>
+        <p><span>联系方式</span> 17610176771</p>
+        <p><span>邮箱</span> 1227039581@qq.com</p>
+        <p><span>期望薪资</span> 8k-10k</p>
+      </div>
+    </div>
+    <div class="main clearfix">
+      <div class="experience">
+        <ul class="work">
+          <h3>WORK EXPERINECE</h3>
+          <li>
+            <p class="title"><span class="company">华信永道（北京）科技股份有限公司</span>/2016/03-/2017/06</p>
+            <p>1、负责项目中公积金系统归集、贷款、提取、财务各个子系统部分功能的开发、测试、联调以及维护；<br />
+              2、负责项目中电子档案部分核心系统的开发并与外围系统人员协作测试、解决问题；<br />
+              3、负责和外围系统开发人员沟通，并能很好的理解工作伙伴的需求，紧跟项目周期，高质量的完成领导布置的任务；<br />
+              4、根据客户的需求，为客户提供解决的方案并实施
+            </p></li>
+        </ul>
+      </div>
+      <div class="education">
+        <ul class="school">
+          <h3>EDUCATION</h3>
+          <li>
+            <p class="title"><span class="school">长春理工大学</span>/2012/09-/2016/06</p>
+            <p>/本科/信息管理与信息系统<br />
+            主修课程：C语言、面向对象程序设计、数据结构、操作系统、数据库原理与应用、网页开发与设计、计算机网络等。</p>
+          </li>
+        </ul>
+      </div>
+      <div class="activities">
+        <ul class="social">
+          <h3>ACTIVITIES</h3>
+          <li>
+            <p class="title"><span class="social">项目主页</span></p>
+            <p>通过HTML、CSS（列表、浮动、清理浮动、居中等知识）、JS、jQuery基础知识制作个人项目展示页面，通过点击项目浏览制作效果。</p>
+            <img src="./projectsnav.png">
+          </li>
+          <li>
+            <p class="title"><span class="social">在线版简历</span></p>
+            <p>通过CSS类选择器、绝对定位、布局等知识，制作简单的图标和效果，个人版在线简历，点击图片可查看源码</p>
+            <img src="./onlineintro.png">
+          </li>
+          <li>
+            <p class="title"><span class="social">企业静态页面</span></p>
+            <p>CSS综合应用</p>
+            <img src="./companyintro.png">
+          </li>
+          <li>
+            <p class="title"><span class="social">轮播页面</span></p>
+            <p>使用CSS巧妙布局，和JS、jQuery、动画等知识相结合实现渐变式以及移动式轮播效果</p>
+            <img src="./rotation.png">
+          </li>
+          <li>
+            <p class="title"><span class="social">懒加载、ajax、瀑布流</span></p>
+            <p>利用JS、jQuery、AJAX、Easy-Mock等技术，制作了包含懒加载、瀑布流等效果的页面</p>
+            <img src="./lazyload.png">
+          </li>
+          <li>
+            <p class="title"><span class="social">React</span></p>
+            <p>React框架制作TODOList，回车添加，可删除，注册、登录、修改个人密码并且记录个人数据</p>
+            <img src="./signup.png">
+            <img src="./signin.png">
+            <img src="./mainpage.png">
+          </li>
+        </ul>
+      </div>
+      <!-- <div class="skills">
+        <ul class="prof">
+          <h3>SKILLS</h3>
+          <li>
+            <p>HTML</p></li>
+          <li>
+            <p>CSS</p></li>
+          <li>
+            <p>CSS</p></li>
+        </ul>
+      </div> -->
+    </div>
+  </div>
+</body>
+</html>

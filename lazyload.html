@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>瀑布流+懒加载+ajax</title>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<style type="text/css">
+		.news-container .group ul,
+		.news-container .group li{
+			list-style: none;
+		}
+		.news-container{
+			width: 900px;
+			margin: 0 auto;
+		}
+		.news-container .group ul{
+			position: relative;
+
+		}
+		.news-container .group .news li{
+			position: absolute;
+			width: 250px;
+			border: 1px solid #ccc;
+			padding: 5px 5px;
+			margin-right: 10px;
+			margin-top: 10px;
+			float: left;
+		}
+		.news-container .group .news .items img{
+			max-width: 100%;
+		}
+		.news-container .group .news .items p{
+			font-size: 14px;
+		}
+		.clearfix::after{
+			display: block;
+			content: '';
+			clear: both;
+		}
+		.hide{
+			display: none;
+		}
+		#load{
+			opacity: 0;
+		}
+	</style>
+</head>
+<body>
+	<div class="news-container">
+		<div class="group">
+			<ul class="news clearfix">
+				<!-- <li class="items">
+					<a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg"></a>
+					<h4>上海首条全息投影马路亮相</h4>
+					<p>2017年1月5日，上海张江地区出现了一条全息投影人行道</p>
+				</li>
+				<li class="items">
+					<a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg"></a>
+					<h4>上海首条全息投影马路亮相</h4>
+					<p>2017年1月5日，上海张江地区出现了一条全息投影人行道</p>
+				</li> -->
+				<li class="items hide"></li>
+			</ul>
+			<div id="load">我是看不见的</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		//伪代码：获取数据，把数据变为DOM展示在页面上，瀑布流的方式显示在页面上，页面底部时，回到获取数据
+
+		var curPage = 1
+		var perPageCount = 10
+		var nodeWidth = $('.items').outerWidth(true)
+		var colSumHeight = []
+		var colNum = parseInt($('.news-container').width()/nodeWidth)
+		for(var i = 0; i < colNum; i++){
+			colSumHeight[i] = 0
+		}
+
+		start()
+
+		function start(){
+			getData(function(newsList){
+				$.each(newsList, function(idx, news){
+					var $node = getNode(news)
+					$node.find('img').load(function(){
+						$('.group .news').append($node)
+						waterFallPlace($node)
+					})
+				})
+			})
+		}
+
+		$(window).scroll(function(){
+			if(isVisible($('#load'))){
+				start()
+			}
+		})
+
+	
+		function getData(callback){
+			$.ajax({
+				url: 'https://www.easy-mock.com/mock/59a3c5e19d8ef6191d070ecc/images/image',
+				dataType:'json',
+				method: 'get'
+			}).done(function(req, ret){
+				if(ret === 'success'){
+					callback(req.data)
+					curPage++
+				}
+			}).fail(function(){
+				console.log('加载数据失败')
+			})
+		}
+
+		function getNode(news){
+			var html = ''
+
+			html += '<li class="items">'
+			html += '<a href="'+ news.url + '"><img src="'+ news.img_url + '"></a>'
+			html += '<h4>'+ news.short_name+'</h4>'
+			html += '<p>'+ news.short_intro+'</p>'
+			html += '</li>'
+
+			return $(html)
+		}
+		var count = 0
+		function waterFallPlace($node){
+			count++
+			console.log(count)
+			var index = 0
+			var minHeight = colSumHeight[0]
+
+			minHeight = Math.min.apply(null, colSumHeight)
+
+			index = colSumHeight.indexOf(minHeight)
+			console.log('left' + nodeWidth * index)
+			console.log('top' + minHeight)
+			$node.css({
+				left: nodeWidth * index,
+				top: minHeight,
+				opacity: 1
+			})
+
+			colSumHeight[index] = $node.outerHeight(true) + colSumHeight[index]
+
+			$('.news').height(Math.max.apply(null, colSumHeight))    //为了把ul撑开
+		}
+
+		function isVisible($node){
+			var windowHeight = $(window).height()
+			var scrollHeight = $(window).scrollTop()
+			var top = $node.offset().top
+
+			if(windowHeight + scrollHeight > top){
+				return true
+			}else{
+				return false
+			}
+		}
+
+	</script>
+
+</body>
+</html>

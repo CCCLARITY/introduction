@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>轮播</title>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	.play{
+		margin: 0 auto;
+		overflow: hidden;
+		width: 320px;
+		height: 200px;
+		position: relative;
+	}
+	.play ul,
+	.play li{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	.play .image-ct{
+		position: absolute;
+	}
+	.play .image-ct>li{
+		float: left;
+	}
+	.play .image-ct img{
+		width: 320px;
+		height: 200px;
+		
+	}
+	.play .arrow{
+		position: absolute;
+		top: 50%;
+		margin-top: -15px;
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		border: 1px solid #fff;
+		z-index: 1;
+		line-height: 30px;
+		color: #fff;
+		text-align: center;
+		text-decoration: none;
+	}
+	
+	.play .pre{
+		left: 10px;
+	}
+	.play .next{
+		right: 10px;
+	}
+	.play .bullet{
+		z-index: 1;
+		line-height: 5px;
+		position: absolute;
+		bottom: 10px;
+		width: 100%;
+		text-align: center;
+		font-size: 0;
+	}
+	.play .bullet>li{
+		height: 5px;
+		width: 30px;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		display: inline-block;
+		margin: 0 3px;
+	}
+	.play .bullet>li.active{
+		background: #ccc;
+	}
+	.clearfix::after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+
+	</style>
+</head>
+<body>
+	<div class="play">
+		<ul class="image-ct clearfix">
+			<li data-id=0><a href="#"><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=3557968056,3641880713&fm=26&gp=0.jpg"></a></li>
+			<li data-id=1><a href="#"><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=680373320,3164516505&fm=26&gp=0.jpg"></a></li>
+			<li data-id=2><a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1504505617&di=0fc42f210caf746c61d9f3318e4b4278&imgtype=jpg&er=1&src=http%3A%2F%2Fimgstore.cdn.sogou.com%2Fapp%2Fa%2F100540002%2F799114.jpg"></a></li>
+			<li data-id=3><a href="#"><img src="https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=3665283648,4229328914&fm=26&gp=0.jpg"></a></li>
+		</ul>
+		<a class="pre arrow" href="#"><</a>
+		<a class="next arrow" href="#">></a>
+		<ul class="bullet clearfix">
+			<li class="active"></li>	
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	<script type="text/javascript">
+		var $imgCt = $('.play .image-ct')
+		var $imgs = $('.play .image-ct li')
+		var $preArrow = $('.play .pre')
+		var $nextArrow = $('.play .next')
+		var $bullet = $('.play .bullet li')
+
+		var liLength = $imgs.length
+		var imgWidth = $imgs.width()
+		var pageIndex = 0
+		var isAnimate = false
+
+		$('.play .image-ct').append($imgs.first().clone())
+		$imgs.last().clone().prependTo($imgCt)
+
+		var width1 = $('.play .image-ct li').width()
+		var length1 = $('.play .image-ct li').length
+
+		$imgCt.css({width: width1*length1})
+		$imgCt.css({left: -imgWidth})
+
+		$preArrow.click(function(){
+			playPre(1)
+		})
+		$nextArrow.click(function(){
+			playNext(1)
+		})
+
+		$bullet.click(function(){
+			var index = $(this).index();
+			if(index > pageIndex){
+				playNext(index - pageIndex)
+			}else if(pageIndex > index){
+				playPre(pageIndex - index)
+			}
+		})
+
+		//移动式
+		function playNext(len){
+			if (isAnimate) return
+			isAnimate = true
+			$imgCt.animate({
+				left: '-=' + len*imgWidth
+			},function(){
+				pageIndex += len
+				if(pageIndex === liLength){
+					pageIndex = 0
+					$imgCt.css({left: -imgWidth})
+				}
+				setBullet()
+				isAnimate = false
+			})
+		}
+
+		//渐变式
+		// function playNext(len){
+		// 	var out = pageIndex % liLength
+		// 	var inImg = (pageIndex + len) % liLength
+		// 	if(isAnimate) return;
+		// 	isAnimate = true
+		// 	for(var i = out; i<out+len; i++){
+		// 		$imgs.eq(i).fadeOut(300)
+		// 	}
+		// 	$imgs.eq(inImg).fadeIn(300, function(){
+		// 		isAnimate = false
+		// 	})
+		// 	pageIndex += len
+		// 	setBullet()
+		// }
+
+		//移动式
+		function playPre(len){
+			if (isAnimate) return
+			isAnimate = true
+			$imgCt.animate({
+				left: '+=' + len*imgWidth
+			},function(){
+				pageIndex -= len
+				if(pageIndex < 0){
+					pageIndex = liLength - 1
+					$imgCt.css({left: -imgWidth * liLength})
+				}
+				setBullet()
+				isAnimate = false
+			})
+		}
+
+		//渐变式
+		// function playPre(len){
+		// 	var out = pageIndex % liLength
+		// 	var inImg = (pageIndex - len) % liLength
+		// 	if(isAnimate) return;
+		// 	isAnimate = true
+		// 	for(var i = out; i<out+len; i++){
+		// 		$imgs.eq(i).fadeOut(300)
+		// 	}
+		// 	$imgs.eq(inImg).fadeIn(300, function(){
+		// 		isAnimate = false
+		// 	})
+		// 	pageIndex -= len
+		// 	setBullet()
+		// }
+
+		//渐变式
+		// function setBullet(){
+		// 	var index = pageIndex % liLength
+		// 	$bullet.removeClass('active')
+		// 			.eq(index)
+		// 			.addClass('active')
+		// }
+
+		//移动式
+		function setBullet(){
+			$bullet.removeClass('active')
+					.eq(pageIndex)
+					.addClass('active')
+		}
+
+		setInterval(function(){
+			playNext(1)
+		}, 2000)
+
+	</script>
+
+</body>
+</html>
