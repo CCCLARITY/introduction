@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>瀑布流+懒加载+ajax</title>
-	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
 	<style type="text/css">
 		.news-container .group ul,
 		.news-container .group li{
@@ -48,16 +48,6 @@
 	<div class="news-container">
 		<div class="group">
 			<ul class="news clearfix">
-				<!-- <li class="items">
-					<a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg"></a>
-					<h4>上海首条全息投影马路亮相</h4>
-					<p>2017年1月5日，上海张江地区出现了一条全息投影人行道</p>
-				</li>
-				<li class="items">
-					<a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg"></a>
-					<h4>上海首条全息投影马路亮相</h4>
-					<p>2017年1月5日，上海张江地区出现了一条全息投影人行道</p>
-				</li> -->
 				<li class="items hide"></li>
 			</ul>
 			<div id="load">我是看不见的</div>
@@ -65,7 +55,6 @@
 	</div>
 
 	<script type="text/javascript">
-		//伪代码：获取数据，把数据变为DOM展示在页面上，瀑布流的方式显示在页面上，页面底部时，回到获取数据
 
 		var curPage = 1
 		var perPageCount = 10
@@ -143,7 +132,7 @@
 
 			colSumHeight[index] = $node.outerHeight(true) + colSumHeight[index]
 
-			$('.news').height(Math.max.apply(null, colSumHeight))    //为了把ul撑开
+			$('.news').height(Math.max.apply(null, colSumHeight)) 
 		}
 
 		function isVisible($node){
