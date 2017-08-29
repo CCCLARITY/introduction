@@ -50,7 +50,7 @@
 			<ul class="news clearfix">
 				<li class="items hide"></li>
 			</ul>
-			<div id="load">我是看不见的</div>
+			<div id="load"></div>
 		</div>
 	</div>
 
@@ -115,15 +115,12 @@
 		var count = 0
 		function waterFallPlace($node){
 			count++
-			console.log(count)
 			var index = 0
 			var minHeight = colSumHeight[0]
 
 			minHeight = Math.min.apply(null, colSumHeight)
 
 			index = colSumHeight.indexOf(minHeight)
-			console.log('left' + nodeWidth * index)
-			console.log('top' + minHeight)
 			$node.css({
 				left: nodeWidth * index,
 				top: minHeight,

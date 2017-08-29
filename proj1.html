@@ -121,6 +121,7 @@
       padding-bottom: 10px;
       position: relative;
     }
+
     .activities li::before{
       content: '+';
       display: inline-block;
@@ -134,7 +135,7 @@
       left: -10px;
     }
     .activities ul h3{
-      width: 300px;
+      width: 400px;
       border-bottom: 2px solid #888;
       padding-bottom: 10px;
     }
@@ -148,6 +149,44 @@
     }
     .activities .social img{
       width: 600px;
+    }
+    .activities .social a{
+      text-decoration: none;
+      color: #aaa;
+      font-size: 14px;
+      font-style: italic;
+    }
+    .skills{
+      width: 100%;
+      float: left;
+    }
+    .skills ul{
+      list-style: none;
+    }
+    .skills li{
+      padding-left: 30px;
+      position: relative;
+    }
+    .skills li::before{
+      content: '+';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 1px solid;
+      text-align: center;
+      border-radius: 50% 50%;
+      position: absolute;
+      top: 0;
+      left: -10px;
+    }
+    .skills ul h3{
+      width: 400px;
+      border-bottom: 2px solid #888;
+      padding-bottom: 10px;
+    }
+    .skills ul li p{
+      padding: 0;
+      color: #000;
     }
     .clearfix:after{
       content: '';
@@ -201,37 +240,56 @@
         <ul class="social">
           <h3>ACTIVITIES</h3>
           <li>
-            <p class="title"><span class="social">项目主页</span></p>
+            <p class="title"><span class="social">项目主页</span><a href="https://github.com/CCCLARITY/introduction/blob/master/index.html" target="_blank">　去GitHub上查看源码</a></p>
             <p>通过HTML、CSS（列表、浮动、清理浮动、居中等知识）、JS、jQuery基础知识制作个人项目展示页面，通过点击项目浏览制作效果。</p>
             <img src="./projectsnav.png">
           </li>
           <li>
-            <p class="title"><span class="social">在线版简历</span></p>
+            <p class="title"><span class="social">在线版简历</span><a href="https://github.com/CCCLARITY/introduction/blob/master/proj1.html" target="_blank">　去GitHub上查看源码</a></p>
             <p>通过CSS类选择器、绝对定位、布局等知识，制作简单的图标和效果，个人版在线简历，点击图片可查看源码</p>
             <img src="./onlineintro.png">
           </li>
           <li>
-            <p class="title"><span class="social">企业静态页面</span></p>
+            <p class="title"><span class="social">企业静态页面</span><a href="https://github.com/CCCLARITY/introduction/blob/master/companyintro.html" target="_blank">　去GitHub上查看源码</a></p>
             <p>CSS综合应用</p>
             <img src="./companyintro.png">
           </li>
           <li>
-            <p class="title"><span class="social">轮播页面</span></p>
+            <p class="title"><span class="social">轮播页面</span><a href="https://github.com/CCCLARITY/introduction/blob/master/rotation.html" target="_blank">　去GitHub上查看源码</a></p>
             <p>使用CSS巧妙布局，和JS、jQuery、动画等知识相结合实现渐变式以及移动式轮播效果</p>
             <img src="./rotation.png">
           </li>
           <li>
-            <p class="title"><span class="social">懒加载、ajax、瀑布流</span></p>
+            <p class="title"><span class="social">懒加载、ajax、瀑布流</span><a href="https://github.com/CCCLARITY/introduction/blob/master/lazyload.html" target="_blank">　去GitHub上查看源码</a></p>
             <p>利用JS、jQuery、AJAX、Easy-Mock等技术，制作了包含懒加载、瀑布流等效果的页面</p>
             <img src="./lazyload.png">
           </li>
           <li>
-            <p class="title"><span class="social">React</span></p>
-            <p>React框架制作TODOList，回车添加，可删除，注册、登录、修改个人密码并且记录个人数据</p>
+            <p class="title"><span class="social">React</span><a href="https://github.com/CCCLARITY/todoList-practice1" target="_blank">　去GitHub上查看源码</a></p>
+            <p>React框架制作TODOList，回车添加，可删除，注册、登录、修改个人密码并且记录个人数据，使用leanCloud存储数据</p>
             <img src="./signup.png">
             <img src="./signin.png">
             <img src="./mainpage.png">
           </li>
+        </ul>
+      </div>
+      <div class="skills">
+        <ul class="prof">
+          <h3>SKILLS</h3>
+          <li>
+            <p>英语CET6；</p></li>
+          <li>
+            <p>熟练掌握C语言，有相关开发经验；熟练使用SQL，对数据的增删改查、速度优化及相关操作能够熟练的应用；熟练应用ESQL，把SQL语言嵌入到过程化的编程语言中，同时提高两种语言的灵活性；</p></li>
+          <li>
+            <p>精通HTML、CSS、JavaScript、jQuery基础知识，能做出尊重设计稿的静态页面，有相关开发经验；</p></li>
+          <li>
+            <p>了解AJAX相关原理及应用，了解JSONP、CORS等跨域解决方案，能与后端程序员配合实现动态页面；</p></li>
+          <li>
+            <p>了解npm&Git，有相关使用经验，能使用Git工具对代码进行版本管理；</p></li>
+          <li>
+            <p>掌握面向对象思想，能根据面向对象思想封装常用组件；</p></li>
+          <li>
+            <p>了解React框架，理解相关概念，能实现简单的交互效果，实现注册、登录、忘记密码、使用leancloud保存用户数据等功能</p></li>
         </ul>
       </div>
     </div>
